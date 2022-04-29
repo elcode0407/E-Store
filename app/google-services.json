@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "409205228232",
+    "project_id": "store-c5503",
+    "storage_bucket": "store-c5503.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409205228232:android:75c5fee6aa0fe0abf2dbfd",
+        "android_client_info": {
+          "package_name": "com.elcode.e_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409205228232-2ftna25v1tatod630f5oleu6u07v32kb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcjxHt-THZPn--tVEwYHrO2PIQ77AdFjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409205228232-2ftna25v1tatod630f5oleu6u07v32kb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
