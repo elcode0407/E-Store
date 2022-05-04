@@ -3,10 +3,18 @@ package com.elcode.e_store;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.elcode.e_store.adapter.CourseAdapter;
+import com.elcode.e_store.model.Order;
 
 public class CoursePage extends AppCompatActivity {
 
@@ -14,7 +22,7 @@ public class CoursePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_page);
-
+        String position = null;
         LinearLayout coursePageBg = findViewById(R.id.courseBG);
         ConstraintLayout courseBg = findViewById(R.id.coursePageBg);
         ImageView courseImage = findViewById(R.id.coursePageImage);
@@ -25,10 +33,18 @@ public class CoursePage extends AppCompatActivity {
 
         coursePageBg.setBackgroundColor(getIntent().getIntExtra("coursePageBg",0));
         courseBg.setBackgroundColor(getIntent().getIntExtra("courseBg", 0));
-        courseImage.setImageResource(getIntent().getIntExtra("courseImage", 0));
+        Glide.with(this).load(getIntent().getStringExtra("courseImage")).into(courseImage);
         courseTitle.setText(getIntent().getStringExtra("courseTitle"));
         courseDate.setText(getIntent().getStringExtra("courseDate"));
         courseLevel.setText(getIntent().getStringExtra("courseLevel"));
         courseText.setText(getIntent().getStringExtra("courseText"));
+
+
+    }
+
+    public  void addToCard(View view){
+        int item_id = getIntent().getIntExtra("courseId", 0);
+        Order.items_id.add(item_id);
+        Toast.makeText(this,"Добавлено в Корзину!", Toast.LENGTH_LONG).show();
     }
 }

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EStore">
         <activity
+            android:name=".OrderPage"
+            android:exported="false" />
+        <activity
             android:name=".CoursePage"
             android:exported="false" />
         <activity

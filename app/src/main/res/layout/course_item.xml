@@ -20,14 +20,14 @@
             android:id="@+id/courseBG"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="#000000"
             android:orientation="vertical"
             android:paddingBottom="30dp">
 
             <ImageView
                 android:id="@+id/courseImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="245dp"
+                android:layout_height="162dp"
                 android:contentDescription="@string/app_name"
                 android:transitionName="courseImage"
                 app:srcCompat="@drawable/ic_java" />

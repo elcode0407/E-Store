@@ -6,6 +6,7 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.elcode.e_store.CoursePage;
 import com.elcode.e_store.MainActivity;
 import com.elcode.e_store.R;
@@ -34,7 +36,7 @@ import java.util.List;
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
 
     Context context;
-    List<Course> courses;
+    public List<Course> courses;
 
     public CourseAdapter(Context context, List<Course> courses) {
         this.context = context;
@@ -51,9 +53,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.courseBG.setBackgroundColor(Color.parseColor(courses.get(position).getColor()));
-
-        int imageId = context.getResources().getIdentifier("ic_" + courses.get(position).getImg(), "drawable", context.getPackageName());
-        holder.courseImage.setImageResource(imageId);
+        Glide.with(context).load(courses.get(position).getImg()).into(holder.courseImage);
 
         holder.courseTitle.setText(courses.get(position).getTitle());
         holder.courseDate.setText(courses.get(position).getDate());
@@ -67,15 +67,16 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
                         (Activity) context,
                         new Pair<View, String>(holder.courseImage, "courseImage")
-                        );
+                );
 
+                intent.putExtra("courseImage", courses.get(position).getImg());
                 intent.putExtra("coursePageBg", Color.parseColor(courses.get(position).getColor()));
                 intent.putExtra("courseBg", Color.parseColor(courses.get(position).getColor()));
-                intent.putExtra("courseImage", imageId);
-                intent.putExtra("courseTitle",courses.get(position).getTitle());
-                intent.putExtra("courseDate",courses.get(position).getDate());
-                intent.putExtra("courseLevel",courses.get(position).getLevel());
-                intent.putExtra("courseText",courses.get(position).getText());
+                intent.putExtra("courseTitle", courses.get(position).getTitle());
+                intent.putExtra("courseDate", courses.get(position).getDate());
+                intent.putExtra("courseLevel", courses.get(position).getLevel());
+                intent.putExtra("courseText", courses.get(position).getText());
+                intent.putExtra("courseId", courses.get(position).getId());
 
 
                 context.startActivity(intent, options.toBundle());
@@ -84,15 +85,17 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
     }
 
+
     @Override
     public int getItemCount() {
         return courses.size();
     }
 
-    public static final class  CourseViewHolder extends RecyclerView.ViewHolder{
+    public static final class CourseViewHolder extends RecyclerView.ViewHolder {
         LinearLayout courseBG;
-        ImageView courseImage;
+        public ImageView courseImage, coursePageImage;
         TextView courseTitle, courseDate, courseLevel;
+
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -102,5 +105,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
             courseDate = itemView.findViewById(R.id.courseDate);
             courseLevel = itemView.findViewById(R.id.courseLevel);
         }
+
     }
+
+
 }
