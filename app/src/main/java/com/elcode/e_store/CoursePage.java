@@ -5,8 +5,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,12 +19,13 @@ import com.elcode.e_store.adapter.CourseAdapter;
 import com.elcode.e_store.model.Order;
 
 public class CoursePage extends AppCompatActivity {
+    public static ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_page);
-        String position = null;
+        imageButton = findViewById(R.id.addToCard);
         LinearLayout coursePageBg = findViewById(R.id.courseBG);
         ConstraintLayout courseBg = findViewById(R.id.coursePageBg);
         ImageView courseImage = findViewById(R.id.coursePageImage);

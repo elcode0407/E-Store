@@ -99,7 +99,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orders_list"
         android:layout_width="0dp"
         android:layout_height="0dp"

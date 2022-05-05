@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView categoryRecycler, courseRecycler;
     CategoryAdapter categoryAdapter;
     static CourseAdapter courseAdapter;
-    static List<Course> courseList = new ArrayList<>();
+    public static List<Course> courseList = new ArrayList<>();
     static List<Course> fullCourseList = new ArrayList<>();
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference reference = database.getReference("courses");
+    static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    public static DatabaseReference reference = database.getReference("courses");
 
 
     @Override

@@ -93,7 +93,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
     public static final class CourseViewHolder extends RecyclerView.ViewHolder {
         LinearLayout courseBG;
-        public ImageView courseImage, coursePageImage;
+        public ImageView courseImage;
         TextView courseTitle, courseDate, courseLevel;
 
         public CourseViewHolder(@NonNull View itemView) {
